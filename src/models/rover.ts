@@ -9,15 +9,15 @@ export class Rover {
 	rotate(orientation: Orientation) {
 		switch (this.state.heading) {
 			case 'N':
-				this.state.heading = orientation == 'R' ? 'E' : 'O';
+				this.state.heading = orientation == 'R' ? 'E' : 'W';
 				break;
 			case 'E':
 				this.state.heading = orientation == 'R' ? 'S' : 'N';
 				break;
 			case 'S':
-				this.state.heading = orientation == 'R' ? 'O' : 'E';
+				this.state.heading = orientation == 'R' ? 'W' : 'E';
 				break;
-			case 'O':
+			case 'W':
 				this.state.heading = orientation == 'R' ? 'N' : 'S';
 				break;
 		}
@@ -36,7 +36,7 @@ export class Rover {
 			case 'S':
 				destination.y = destination.y + (direction == 'F' ? -1 : 1);
 				break;
-			case 'O':
+			case 'W':
 				destination.x = destination.x + (direction == 'F' ? -1 : 1);
 				break;
 		}
@@ -47,11 +47,10 @@ export class Rover {
 		if (destination.x < 0) destination.x = this.planet.size.width + destination.x;
 
 		if (this.planet.hasObstacle(destination)) {
-			console.log(`COMMAND ABORTED: rover has encountered an obstacle in position (${destination.x + ',' + destination.y}).`);
-			return false;
+			return `COMMAND ABORTED: rover has encountered an obstacle in position (${destination.x + ',' + destination.y}).`;
 		}
 
 		this.state.coordinates = destination;
-		return true;
+		return;
 	}
 }

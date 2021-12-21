@@ -3,6 +3,8 @@ import { RoverRoutes } from './routes/rover.routes';
 const app: Application = express();
 const port = process.env.PORT || 8810;
 
+app.use(express.json());
+
 app.listen(port, () => {
 	setupRoutes();
 	console.log(`server started on port ${port}`);
