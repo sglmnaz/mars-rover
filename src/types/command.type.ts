@@ -1,4 +1,4 @@
 import { Direction } from './direction.type';
-import { Orientation } from './orientation.type';
+import { Rotation } from './rotation.type';
 
-export type Command = Direction | Orientation;
+export type Command = Direction | Rotation;

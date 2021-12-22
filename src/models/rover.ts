@@ -1,32 +1,42 @@
 import { Direction } from '../types/direction.type';
 import { Orientation } from '../types/orientation.type';
+import { Rotation } from '../types/rotation.type';
+import { Coordinats } from './coordinates.interface';
 import { Planet } from './planet';
 import { RoverState } from './rover-sate.interface';
 
 export class Rover {
-	constructor(public planet: Planet, public state: RoverState = { coordinates: { x: 0, y: 0 }, heading: 'N' }) {}
+	private state: RoverState;
+	private planet: Planet;
 
-	rotate(orientation: Orientation) {
+	constructor(planet: Planet, state: RoverState = { coordinates: { x: 0, y: 0 }, heading: 'N' }) {
+		this.state = state;
+		this.planet = planet;
+	}
+
+	//rotates the rover of 90° left or right based on the input rotation
+	rotate(rotation: Rotation) {
 		switch (this.state.heading) {
 			case 'N':
-				this.state.heading = orientation == 'R' ? 'E' : 'W';
+				this.setHeading(rotation == 'R' ? 'E' : 'W');
 				break;
 			case 'E':
-				this.state.heading = orientation == 'R' ? 'S' : 'N';
+				this.setHeading(rotation == 'R' ? 'S' : 'N');
 				break;
 			case 'S':
-				this.state.heading = orientation == 'R' ? 'W' : 'E';
+				this.setHeading(rotation == 'R' ? 'W' : 'E');
 				break;
 			case 'W':
-				this.state.heading = orientation == 'R' ? 'N' : 'S';
+				this.setHeading(rotation == 'R' ? 'N' : 'S');
 				break;
 		}
 	}
 
+	//moves the rover of 1 unit forward or backward based on the input direction
 	move(direction: Direction) {
-		const destination = { ...this.state.coordinates };
+		const destination = { ...this.getPosition() };
 
-		switch (this.state.heading) {
+		switch (this.getHeading()) {
 			case 'N':
 				destination.y = destination.y + (direction == 'F' ? 1 : -1);
 				break;
@@ -41,16 +51,40 @@ export class Rover {
 				break;
 		}
 
-		if (destination.y >= this.planet.size.height) destination.y = destination.y - this.planet.size.height;
-		if (destination.y < 0) destination.y = this.planet.size.height + destination.y;
-		if (destination.x >= this.planet.size.width) destination.x = destination.x - this.planet.size.width;
-		if (destination.x < 0) destination.x = this.planet.size.width + destination.x;
+		if (destination.y >= this.planet.getSize().height) destination.y = destination.y - this.planet.getSize().height;
+		if (destination.y < 0) destination.y = this.planet.getSize().height + destination.y;
+		if (destination.x >= this.planet.getSize().width) destination.x = destination.x - this.planet.getSize().width;
+		if (destination.x < 0) destination.x = this.planet.getSize().width + destination.x;
 
 		if (this.planet.hasObstacle(destination)) {
 			return `COMMAND ABORTED: rover has encountered an obstacle in position (${destination.x + ',' + destination.y}).`;
 		}
 
-		this.state.coordinates = destination;
+		this.setPosition(destination);
 		return;
+	}
+
+	getPosition() {
+		return this.state.coordinates;
+	}
+
+	setPosition(position: Coordinats) {
+		this.state.coordinates = position;
+	}
+
+	getHeading() {
+		return this.state.heading;
+	}
+
+	setHeading(heading: Orientation) {
+		this.state.heading = heading;
+	}
+
+	getState() {
+		return this.state;
+	}
+
+	getPlanet() {
+		return this.planet;
 	}
 }
