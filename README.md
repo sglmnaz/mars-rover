@@ -10,8 +10,15 @@ You’re part of the team that explores Mars by sending remotely controlled vehi
 - Implement wrapping from one edge of the grid to another. (planets are spheres after all)
 - Implement obstacle detection before each move to a new square. If a given sequence of commands encounters an obstacle, the rover moves up to the last possible point, aborts the sequence and reports the obstacle.
 
-## instructions
-1. install node ( i'm using node v14.17.0 )
+## setup instructions
+1. install node ( I'm using node v14.17.0 )
 2. run npm i
 3. run npm run build
 4. run npm run start
+
+## endpoints instructions
+
+- GET localhost:PORT/rover
+  - returns the current state of the Mission
+- POST localhost:PORT/rover
+  - takes an array of commands in the request body ex: ["F","R","F","L","B"], the commands will be executed by the rover then the state of the mission will be returned. If the rover encounters an obstacle it will stop executing commands and a message will be returned.

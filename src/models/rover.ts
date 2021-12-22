@@ -9,7 +9,7 @@ export class Rover {
 	private state: RoverState;
 	private planet: Planet;
 
-	constructor(planet: Planet, state: RoverState = { coordinates: { x: 0, y: 0 }, heading: 'N' }) {
+	constructor(planet: Planet, state: RoverState = { position: { x: 0, y: 0 }, heading: 'N' }) {
 		this.state = state;
 		this.planet = planet;
 	}
@@ -65,11 +65,11 @@ export class Rover {
 	}
 
 	getPosition() {
-		return this.state.coordinates;
+		return this.state.position;
 	}
 
 	setPosition(position: Coordinats) {
-		this.state.coordinates = position;
+		this.state.position = position;
 	}
 
 	getHeading() {
