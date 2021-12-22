@@ -10,7 +10,7 @@ export class Mission {
 	]);
 	static rover = new Rover(Mission.planet);
 
-	//prints the current state of the mission, 🟩 = empty position, 🔼 = rover, ⛔ = obstacle.
+	//prints the current state of the mission, 🟩 = empty position, 🔼 = rover, 🟥 = obstacle.
 	static printStatus() {
 		let map = '';
 		for (let y = Mission.planet.size.height - 1; y >= 0; y--) {
@@ -18,7 +18,7 @@ export class Mission {
 				if (Mission.rover.state.coordinates.x == x && Mission.rover.state.coordinates.y == y) {
 					const heading = Mission.rover.state.heading;
 					map += heading == 'N' ? '🔼' : heading == 'E' ? '▶️' : heading == 'S' ? '🔽' : '◀️';
-				} else if (Mission.planet.hasObstacle({ x, y })) map += '⛔';
+				} else if (Mission.planet.hasObstacle({ x, y })) map += '🟥';
 				else map += '🟩';
 			}
 			map += '\n';
