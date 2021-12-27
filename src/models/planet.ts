@@ -19,6 +19,10 @@ export class Planet {
 		return false;
 	}
 
+	setSize(size: Size) {
+		this.size = size;
+	}
+
 	getSize() {
 		return this.size;
 	}
