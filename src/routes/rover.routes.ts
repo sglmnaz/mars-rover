@@ -14,6 +14,10 @@ export class RoverRoutes implements RouteInterface {
 			return this.testController.getState(req, res, next);
 		});
 
+		this.app.get(`/${basePath}/reset`, (req: Request, res: Response, next: NextFunction) => {
+			return this.testController.resetPosition(req, res, next);
+		});
+
 		this.app.post(`/${basePath}/`, (req: Request, res: Response, next: NextFunction) => {
 			return this.testController.giveCommands(req, res, next);
 		});

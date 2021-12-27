@@ -11,25 +11,35 @@ export class RoverController {
 		let commands: Command[] = [];
 
 		try {
-			commands = req.body;
+			commands = req.body.map((command: string) => command.toUpperCase());
 
 			for (const command of commands) {
 				switch (command) {
 					case 'F':
 					case 'B':
-						const error = Mission.rover.move(command);
-						if (error) return res.status(200).send(error);
+						const moveResult = Mission.rover.move(command);
+						if (moveResult.message) return res.status(200).send(moveResult.message);
 						break;
 					case 'L':
 					case 'R':
 						Mission.rover.rotate(command);
 						break;
 					default:
-						return res.status(400).send(error);
+						return res.status(400).send();
 				}
 			}
 		} catch (error) {
 			return res.status(400).send(error);
+		}
+
+		return res.status(200).send(Mission.printStatus());
+	}
+
+	resetPosition(req: Request, res: Response, next: NextFunction) {
+		try {
+			Mission.rover.setPosition({ x: 0, y: 0 });
+		} catch (error) {
+			return res.status(500).send(error);
 		}
 
 		return res.status(200).send(Mission.printStatus());
