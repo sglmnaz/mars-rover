@@ -1,7 +1,7 @@
 import { Direction } from '../types/direction.type';
 import { Orientation } from '../types/orientation.type';
 import { Rotation } from '../types/rotation.type';
-import { Coordinats } from './coordinates.interface';
+import { Coordinates } from './coordinates.interface';
 import { Planet } from './planet';
 import { RoverState } from './rover-sate.interface';
 
@@ -71,7 +71,7 @@ export class Rover {
 		return this.state.position;
 	}
 
-	setPosition(position: Coordinats) {
+	setPosition(position: Coordinates) {
 		this.state.position = position;
 	}
 

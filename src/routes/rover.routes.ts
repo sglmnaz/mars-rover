@@ -3,7 +3,7 @@ import { RouteInterface } from '../models/route.interface';
 import { RoverController } from '../controllers/rover.controller';
 
 export class RoverRoutes implements RouteInterface {
-	private testController = new RoverController();
+	private roverController = new RoverController();
 
 	constructor(public app: Application, basePath: string = '') {
 		this.addRoutes(basePath);
@@ -11,17 +11,15 @@ export class RoverRoutes implements RouteInterface {
 
 	addRoutes(basePath: string): void {
 		this.app.get(`/${basePath}/`, (req: Request, res: Response, next: NextFunction) => {
-			return this.testController.getState(req, res, next);
+			return this.roverController.getState(req, res, next);
 		});
 
 		this.app.get(`/${basePath}/reset`, (req: Request, res: Response, next: NextFunction) => {
-			return this.testController.resetPosition(req, res, next);
+			return this.roverController.resetState(req, res, next);
 		});
 
 		this.app.post(`/${basePath}/`, (req: Request, res: Response, next: NextFunction) => {
-			return this.testController.giveCommands(req, res, next);
+			return this.roverController.giveCommands(req, res, next);
 		});
-
-		//todo: implement route to reset rover position
 	}
 }

@@ -18,7 +18,20 @@ You’re part of the team that explores Mars by sending remotely controlled vehi
 
 ## endpoints instructions
 
+### rover
+
 - GET localhost:PORT/rover
-  - returns the current state of the Mission
+  - returns the current state of the Mission.
+- GET localhost:PORT/rover/reset
+  - reset rover position to (0,0) and heading to 'N'.
 - POST localhost:PORT/rover
   - takes an array of commands in the request body ex: ["F","R","F","L","B"], the commands will be executed by the rover then the state of the mission will be returned. If the rover encounters an obstacle it will stop executing commands and a message will be returned.
+
+### planet
+
+- POST localhost:PORT/planet/size
+  - takes a Size in the request body and sets the planet's size to the new size.
+- POST localhost:PORT/planet/obstacle
+  - takes a position in the request body and adds an obtacle to the planet in that position.
+- DELETE localhost:PORT/planet/obstacle
+  - takes a position in the request body and removes an obtacle from the planet in that position.

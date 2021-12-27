@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import { PlanetRoutes } from './routes/planet.routes';
 import { RoverRoutes } from './routes/rover.routes';
 const app: Application = express();
 const port = process.env.PORT || 8810;
@@ -12,4 +13,5 @@ app.listen(port, () => {
 
 function setupRoutes() {
 	new RoverRoutes(app, 'rover');
+	new PlanetRoutes(app, 'planet');
 }

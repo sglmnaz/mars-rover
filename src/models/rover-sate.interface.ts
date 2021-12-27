@@ -1,7 +1,7 @@
 import { Orientation } from '../types/orientation.type';
-import { Coordinats } from './coordinates.interface';
+import { Coordinates } from './coordinates.interface';
 
 export interface RoverState {
-	position: Coordinats;
+	position: Coordinates;
 	heading: Orientation;
 }

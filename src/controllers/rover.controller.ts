@@ -35,9 +35,10 @@ export class RoverController {
 		return res.status(200).send(Mission.printStatus());
 	}
 
-	resetPosition(req: Request, res: Response, next: NextFunction) {
+	resetState(req: Request, res: Response, next: NextFunction) {
 		try {
 			Mission.rover.setPosition({ x: 0, y: 0 });
+			Mission.rover.setHeading('N');
 		} catch (error) {
 			return res.status(500).send(error);
 		}
