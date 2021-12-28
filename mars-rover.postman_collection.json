@@ -9,7 +9,7 @@
 			"name": "rover",
 			"item": [
 				{
-					"name": "getState",
+					"name": "get state",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -28,7 +28,7 @@
 					"response": []
 				},
 				{
-					"name": "resetRoverPosition",
+					"name": "reset position",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -48,7 +48,7 @@
 					"response": []
 				},
 				{
-					"name": "giveCommands",
+					"name": "execute commands",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -81,7 +81,7 @@
 			"name": "planet",
 			"item": [
 				{
-					"name": "getSize",
+					"name": "get size",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -101,7 +101,7 @@
 					"response": []
 				},
 				{
-					"name": "setSize",
+					"name": "set size",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -130,7 +130,7 @@
 					"response": []
 				},
 				{
-					"name": "listObstacles",
+					"name": "list obstacles",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -150,7 +150,7 @@
 					"response": []
 				},
 				{
-					"name": " insertObstacle",
+					"name": "insert obstacle",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -183,15 +183,6 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "    {\r\n        \"x\": 3,\r\n        \"y\": 0\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "http://localhost:{{PORT}}/planet/obstacles/randomize/{{OBSTACLES_COUNT}}",
 							"protocol": "http",
@@ -210,7 +201,7 @@
 					"response": []
 				},
 				{
-					"name": "removeObstacle",
+					"name": "remove obstacle",
 					"request": {
 						"method": "DELETE",
 						"header": [],

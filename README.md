@@ -37,12 +37,12 @@ run `npm run test`
 - GET localhost:PORT/planet/size
   - returns the size of the planet.
 - POST localhost:PORT/planet/size
-  - takes a Size in the request body and sets the planet's size to the new size.
+  - takes a Size { width: number, height : number} in the request body and sets the planet's size to the new size.
 - GET localhost:PORT/planet/obstacles
   - returns the list of all obstacles.
 - POST localhost:PORT/planet/obstacles
-  - takes a position in the request body and adds an obtacle to the planet in that position.
+  - takes a position { x: number, y : number} in the request body and adds an obtacle to the planet in that position.
 - POST localhost:PORT/planet/obstacles/randomize/COUNT
   - takes COUNT (number) as parameter and generates COUNT obstacles in random positions on the planet.
 - DELETE localhost:PORT/planet/obstacles
-  - takes a position in the request body and removes an obtacle from the planet in that position.
+  - takes a position { x: number, y : number} in the request body and removes an obtacle from the planet in that position.
