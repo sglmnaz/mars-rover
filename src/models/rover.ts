@@ -32,7 +32,7 @@ export class Rover {
 		}
 	}
 
-	//moves the rover of 1 unit forward or backward based on the input direction
+	//moves the rover 1 unit forward or backward based on the input direction
 	move(direction: Direction) {
 		const destination = { ...this.getPosition() };
 

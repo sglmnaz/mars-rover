@@ -19,6 +19,15 @@ export class Planet {
 		return false;
 	}
 
+	//returns true if the specified position is inside the width/height of the planet
+	hasPosition(position: Coordinates) {
+		if (position.x > this.size.width - 1) return false;
+		if (position.y > this.size.height - 1) return false;
+		if (position.x < 0 || position.y < 0) return false;
+
+		return true;
+	}
+
 	insertObstacle(position: Coordinates) {
 		this.obstacles.push(position);
 	}

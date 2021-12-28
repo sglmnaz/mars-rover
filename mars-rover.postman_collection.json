@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "8b8201cb-fe6b-496f-9bea-82616b513683",
+		"name": "mars-rover",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "rover",
+			"item": [
+				{
+					"name": "getState",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{PORT}}/rover",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"rover"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetRoverPosition",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{PORT}}/rover/reset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"rover",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "giveCommands",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"F\",\"R\",\"F\",\"L\",\"B\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{PORT}}/rover",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"rover"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "planet",
+			"item": [
+				{
+					"name": "getSize",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{PORT}}/planet/size",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"planet",
+								"size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setSize",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"width\" : 15,\r\n    \"height\" : 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{PORT}}/planet/size",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"planet",
+								"size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listObstacles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{PORT}}/planet/obstacles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"planet",
+								"obstacles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " insertObstacle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"x\": 3,\r\n        \"y\": 0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{PORT}}/planet/obstacles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"planet",
+								"obstacles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "randomize obstacles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"x\": 3,\r\n        \"y\": 0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{PORT}}/planet/obstacles/randomize/{{OBSTACLES_COUNT}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"planet",
+								"obstacles",
+								"randomize",
+								"{{OBSTACLES_COUNT}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeObstacle",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"x\": 3,\r\n        \"y\": 0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{PORT}}/planet/obstacles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"planet",
+								"obstacles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "PORT",
+			"value": "8810"
+		},
+		{
+			"key": "OBSTACLES_COUNT",
+			"value": "15"
+		}
+	]
+}

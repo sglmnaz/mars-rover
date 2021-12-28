@@ -25,7 +25,7 @@ export class RoverController {
 						Mission.rover.rotate(command);
 						break;
 					default:
-						return res.status(400).send();
+						return res.status(400).send('commands must be one of the following: F,B,R,L');
 				}
 			}
 		} catch (error) {

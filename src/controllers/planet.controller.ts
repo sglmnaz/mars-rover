@@ -7,8 +7,17 @@ export class PlanetController {
 	insertObstacle(req: Request, res: Response, next: NextFunction) {
 		try {
 			const position: Coordinates = req.body;
+
 			if (position.x == null || position.y == null) {
 				return res.status(400).send('req body is not Coordinates type');
+			}
+
+			if (!Mission.planet.hasPosition(position)) {
+				return res.status(400).send('position is outside the planet width/height');
+			}
+
+			if (Mission.planet.hasObstacle(position)) {
+				return res.status(400).send('position is already occupied');
 			}
 
 			Mission.planet.insertObstacle(position);
@@ -21,8 +30,13 @@ export class PlanetController {
 	removeObstacle(req: Request, res: Response, next: NextFunction) {
 		try {
 			const position: Coordinates = req.body;
+
 			if (position.x == null || position.y == null) {
 				return res.status(400).send('req body is not Coordinates type');
+			}
+
+			if (!Mission.planet.hasObstacle(position)) {
+				return res.status(400).send('position does not have an obstacle');
 			}
 
 			Mission.planet.removeObstacle(position);
@@ -48,6 +62,10 @@ export class PlanetController {
 			const size: Size = req.body;
 			if (size.width == null || size.height == null) {
 				return res.status(400).send('req body is not Size type');
+			}
+
+			if (size.width < 1 || size.height < 1) {
+				return res.status(400).send('width and height must be >= 1');
 			}
 
 			Mission.planet.setSize(size);
