@@ -32,6 +32,17 @@ export class PlanetController {
 		return res.status(200).send(Mission.printStatus());
 	}
 
+	randomizeObstacles(req: Request, res: Response, next: NextFunction) {
+		try {
+			const count: number = +req.params.count;
+			if (isNaN(count)) throw 'count is not a number';
+			Mission.planet.randomizeObstacles(count);
+		} catch (error) {
+			return res.status(400).send(error);
+		}
+		return res.status(200).send(Mission.printStatus());
+	}
+
 	setSize(req: Request, res: Response, next: NextFunction) {
 		try {
 			const size: Size = req.body;
@@ -44,5 +55,13 @@ export class PlanetController {
 			return res.status(500).send(error);
 		}
 		return res.status(200).send(Mission.printStatus());
+	}
+
+	getSize(req: Request, res: Response, next: NextFunction) {
+		return res.status(200).send(Mission.planet.getSize());
+	}
+
+	getObstacles(req: Request, res: Response, next: NextFunction) {
+		return res.status(200).send(Mission.planet.getObstacles());
 	}
 }

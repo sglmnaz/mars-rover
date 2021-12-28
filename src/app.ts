@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.listen(port, () => {
 	setupRoutes();
-	console.log(`server started on port ${port}`);
+	console.log(`app started on port ${port}`);
 });
 
 function setupRoutes() {

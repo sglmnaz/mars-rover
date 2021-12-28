@@ -1,7 +1,7 @@
 import { Rover } from '../models/rover';
 import { Planet } from '../models/planet';
 
-const planet = new Planet({ width: 3, height: 3 }, []);
+const planet = new Planet({ width: 3, height: 3 });
 const rover = new Rover(planet);
 
 test('rover starts at (0,0)', () => {

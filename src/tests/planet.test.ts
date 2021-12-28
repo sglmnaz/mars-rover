@@ -1,6 +1,6 @@
 import { Planet } from '../models/planet';
 
-const planet = new Planet({ width: 10, height: 10 }, []);
+const planet = new Planet({ width: 10, height: 10 });
 
 test('planet can add/remove obstacle', () => {
 	expect(planet.hasObstacle({ x: 1, y: 1 })).toBe(false);
@@ -21,4 +21,11 @@ test('planet can set size', () => {
 	expect(planet.getSize()).toStrictEqual({ width: 10, height: 10 });
 	planet.setSize({ width: 25, height: 25 });
 	expect(planet.getSize()).toStrictEqual({ width: 25, height: 25 });
+});
+
+test('planet generates random obstacles', () => {
+	planet.clearObstacles();
+	expect(planet.getObstacles().length).toBe(0);
+	planet.randomizeObstacles(10);
+	expect(planet.getObstacles().length).toBe(10);
 });

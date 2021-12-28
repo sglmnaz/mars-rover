@@ -2,12 +2,7 @@ import { Planet } from './planet';
 import { Rover } from './rover';
 
 export class Mission {
-	static planet = new Planet({ width: 10, height: 10 }, [
-		{ x: 1, y: 0 },
-		{ x: 1, y: 7 },
-		{ x: 3, y: 5 },
-		{ x: 6, y: 8 },
-	]);
+	static planet = new Planet({ width: 10, height: 10 }, 10);
 	static rover = new Rover(Mission.planet);
 
 	//prints the current state of the mission, 🟩 = empty position, 🔼 = rover, 🟥 = obstacle.

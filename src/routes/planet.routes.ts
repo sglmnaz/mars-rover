@@ -10,15 +10,27 @@ export class PlanetRoutes implements RouteInterface {
 	}
 
 	addRoutes(basePath: string): void {
+		this.app.get(`/${basePath}/size`, (req: Request, res: Response, next: NextFunction) => {
+			return this.planetController.getSize(req, res, next);
+		});
+
 		this.app.post(`/${basePath}/size`, (req: Request, res: Response, next: NextFunction) => {
 			return this.planetController.setSize(req, res, next);
 		});
 
-		this.app.post(`/${basePath}/obstacle`, (req: Request, res: Response, next: NextFunction) => {
+		this.app.get(`/${basePath}/obstacles`, (req: Request, res: Response, next: NextFunction) => {
+			return this.planetController.getObstacles(req, res, next);
+		});
+
+		this.app.post(`/${basePath}/obstacles`, (req: Request, res: Response, next: NextFunction) => {
 			return this.planetController.insertObstacle(req, res, next);
 		});
 
-		this.app.delete(`/${basePath}/obstacle`, (req: Request, res: Response, next: NextFunction) => {
+		this.app.post(`/${basePath}/obstacles/randomize/:count`, (req: Request, res: Response, next: NextFunction) => {
+			return this.planetController.randomizeObstacles(req, res, next);
+		});
+
+		this.app.delete(`/${basePath}/obstacles`, (req: Request, res: Response, next: NextFunction) => {
 			return this.planetController.removeObstacle(req, res, next);
 		});
 	}

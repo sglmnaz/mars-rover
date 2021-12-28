@@ -10,15 +10,15 @@ You’re part of the team that explores Mars by sending remotely controlled vehi
 - Implement wrapping from one edge of the grid to another. (planets are spheres after all)
 - Implement obstacle detection before each move to a new square. If a given sequence of commands encounters an obstacle, the rover moves up to the last possible point, aborts the sequence and reports the obstacle.
 
-## setup instructions
+## Setup
 1. install node ( I'm using node v14.17.0 )
-2. run npm i
-3. run npm run build
-4. run npm run start
+2. run `npm i`
+3. run `npm run build`
+4. run `npm run start`
 
-## endpoints instructions
+## Endpoints
 
-### rover
+### Rover
 
 - GET localhost:PORT/rover
   - returns the current state of the Mission.
@@ -27,11 +27,17 @@ You’re part of the team that explores Mars by sending remotely controlled vehi
 - POST localhost:PORT/rover
   - takes an array of commands in the request body ex: ["F","R","F","L","B"], the commands will be executed by the rover then the state of the mission will be returned. If the rover encounters an obstacle it will stop executing commands and a message will be returned.
 
-### planet
+### Planet
 
+- GET localhost:PORT/planet/size
+  - returns the size of the planet.
 - POST localhost:PORT/planet/size
   - takes a Size in the request body and sets the planet's size to the new size.
-- POST localhost:PORT/planet/obstacle
+- GET localhost:PORT/planet/obstacles
+  - returns the list of all obstacles.
+- POST localhost:PORT/planet/obstacles
   - takes a position in the request body and adds an obtacle to the planet in that position.
-- DELETE localhost:PORT/planet/obstacle
+- POST localhost:PORT/planet/obstacles/randomize/COUNT
+  - takes a count as parameter and generates COUNT obstacles in random positions on the planet.
+- DELETE localhost:PORT/planet/obstacles
   - takes a position in the request body and removes an obtacle from the planet in that position.
