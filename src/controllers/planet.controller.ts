@@ -24,7 +24,7 @@ export class PlanetController {
 		} catch (error) {
 			return res.status(500).send(error);
 		}
-		return res.status(200).send(Mission.printStatus());
+		return res.status(200).send(Mission.jsonStatus());
 	}
 
 	removeObstacle(req: Request, res: Response, next: NextFunction) {
@@ -43,7 +43,7 @@ export class PlanetController {
 		} catch (error) {
 			return res.status(500).send(error);
 		}
-		return res.status(200).send(Mission.printStatus());
+		return res.status(200).send(Mission.jsonStatus());
 	}
 
 	randomizeObstacles(req: Request, res: Response, next: NextFunction) {
@@ -54,7 +54,7 @@ export class PlanetController {
 		} catch (error) {
 			return res.status(400).send(error);
 		}
-		return res.status(200).send(Mission.printStatus());
+		return res.status(200).send(Mission.jsonStatus());
 	}
 
 	setSize(req: Request, res: Response, next: NextFunction) {
@@ -72,7 +72,7 @@ export class PlanetController {
 		} catch (error) {
 			return res.status(500).send(error);
 		}
-		return res.status(200).send(Mission.printStatus());
+		return res.status(200).send(Mission.jsonStatus());
 	}
 
 	getSize(req: Request, res: Response, next: NextFunction) {

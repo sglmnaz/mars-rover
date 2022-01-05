@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import { MissionRoutes } from './routes/mission.routes';
 import { PlanetRoutes } from './routes/planet.routes';
 import { RoverRoutes } from './routes/rover.routes';
 const app: Application = express();
@@ -14,4 +15,5 @@ app.listen(port, () => {
 function setupRoutes() {
 	new RoverRoutes(app, 'rover');
 	new PlanetRoutes(app, 'planet');
+	new MissionRoutes(app, 'mission');
 }

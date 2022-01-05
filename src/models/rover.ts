@@ -56,15 +56,10 @@ export class Rover {
 		if (destination.x >= this.planet.getSize().width) destination.x = destination.x - this.planet.getSize().width;
 		if (destination.x < 0) destination.x = this.planet.getSize().width + destination.x;
 
-		if (this.planet.hasObstacle(destination)) {
-			return {
-				position: this.getPosition(),
-				message: `COMMAND ABORTED: rover has encountered an obstacle in position (${destination.x + ',' + destination.y}).`,
-			};
-		}
+		if (this.planet.hasObstacle(destination)) return false;
 
 		this.setPosition(destination);
-		return { position: this.getPosition() };
+		return true;
 	}
 
 	getPosition() {

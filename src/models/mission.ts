@@ -1,3 +1,4 @@
+import { Orientation } from '../types/orientation.type';
 import { Planet } from './planet';
 import { Rover } from './rover';
 
@@ -5,25 +6,24 @@ export class Mission {
 	static planet = new Planet({ width: 10, height: 10 }, 10);
 	static rover = new Rover(Mission.planet);
 
-	//prints the current state of the mission, 🟩 = empty position, 🔼 = rover, 🟥 = obstacle.
-	static printStatus() {
-		let map = '';
-		for (let y = Mission.planet.getSize().height - 1; y >= 0; y--) {
+	static jsonStatus() {
+		let map = [];
+		for (let y = 0; y < Mission.planet.getSize().height; y++) {
+			let row: any[] = [];
 			for (let x = 0; x < Mission.planet.getSize().width; x++) {
+				let cell: { x: number; y: number; rover?: boolean; heading?: Orientation; obstacle?: boolean } = { x: x, y: y };
 				if (Mission.rover.getPosition().x == x && Mission.rover.getPosition().y == y) {
 					const heading = Mission.rover.getHeading();
-					map += heading == 'N' ? '🔼' : heading == 'E' ? '▶️' : heading == 'S' ? '🔽' : '◀️';
-				} else if (Mission.planet.hasObstacle({ x, y })) map += '🟥';
-				else map += '🟩';
+					cell.rover = true;
+					cell.heading = heading;
+				} else if (Mission.planet.hasObstacle({ x, y })) {
+					cell.obstacle = true;
+				}
+				row.push(cell);
 			}
-			map += '\n';
+			map.push(row);
 		}
-		// console.log(map);
-		// console.log(Mission.rover.state);
-		return (
-			map +
-			`coordinates: ( ${Mission.rover.getPosition().x} , ${Mission.rover.getPosition().y} ) \n` +
-			`heading: ${Mission.rover.getHeading()} `
-		);
+
+		return map;
 	}
 }

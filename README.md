@@ -1,5 +1,8 @@
 # Mars Rover
 
+## This branch is meant to be used in conjunction with the front-end web app
+You can find the app at https://github.com/sglmnaz/mars-rover-web.
+
 You’re part of the team that explores Mars by sending remotely controlled vehicles to the surface of the planet. Develop an API that translates the commands sent from earth to instructions that are understood by the rover.
 
 ## Requirements
@@ -37,12 +40,12 @@ run `npm run test`
 - GET localhost:PORT/planet/size
   - returns the size of the planet.
 - POST localhost:PORT/planet/size
-  - takes a Size { width: number, height : number} in the request body and sets the planet's size to the new size.
+  - takes a Size { width: number, height : number } in the request body and sets the planet's size to the new size.
 - GET localhost:PORT/planet/obstacles
   - returns the list of all obstacles.
 - POST localhost:PORT/planet/obstacles
-  - takes a position { x: number, y : number} in the request body and adds an obtacle to the planet in that position.
+  - takes a position { x: number, y : number } in the request body and adds an obtacle to the planet in that position.
 - POST localhost:PORT/planet/obstacles/randomize/COUNT
   - takes COUNT (number) as parameter and generates COUNT obstacles in random positions on the planet.
 - DELETE localhost:PORT/planet/obstacles
-  - takes a position { x: number, y : number} in the request body and removes an obtacle from the planet in that position.
+  - takes a position { x: number, y : number } in the request body and removes an obtacle from the planet in that position.
